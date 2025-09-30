@@ -75,6 +75,7 @@ export default function IDELayout({ children }: Props) {
               activePanel={activePanel}
               width={sidePanelWidth}
               onResize={setSidePanelWidth}
+              onClose={() => setShowSidePanel(false)}
             />
           )}
         </motion.div>
@@ -127,7 +128,6 @@ export default function IDELayout({ children }: Props) {
                 onResize={setBottomPanelHeight}
                 onClose={() => setShowBottomPanel(false)}
                 logs={logs}
-                onClose={() => setShowSidePanel(false)}
               />
             )}
           </motion.div>
