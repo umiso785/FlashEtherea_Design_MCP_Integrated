@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Code, AlertTriangle, CheckCircle, Clock, Eye, Edit, Trash2 } from 'lucide-react';
+import { Code, AlertTriangle, CheckCircle, Clock, Eye, FileEdit as Edit, Trash2 } from 'lucide-react';
 import { ComponentNode } from '../../../shared/types/design.types';
 
 interface Props {

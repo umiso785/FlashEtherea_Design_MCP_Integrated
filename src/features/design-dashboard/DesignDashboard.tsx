@@ -1,22 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { 
-  Layers, 
-  GitBranch, 
-  Package, 
-  Settings, 
-  BarChart3,
-  Zap,
-  Code,
-  FileText,
-  Search,
-  Filter,
-  RefreshCw,
-  Eye,
-  Edit,
-  Trash2,
-  Plus
-} from 'lucide-react';
+import { Layers, GitBranch, Package, Settings, BarChart3, Zap, Code, FileText, Search, Filter, RefreshCw, Eye, FileEdit as Edit, Trash2, Plus } from 'lucide-react';
 import ComponentCard from './components/ComponentCard';
 import ArchitectureView from './components/ArchitectureView';
 import DependencyGraph from './components/DependencyGraph';
