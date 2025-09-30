@@ -6,7 +6,7 @@ import EditorPanel from '../components/ide/EditorPanel';
 import RightPanel from '../components/ide/RightPanel';
 import BottomPanel from '../components/ide/BottomPanel';
 import StatusBar from '../components/ide/StatusBar';
-import { useEditor } from '../services/mcp_hooks';
+import { useMCP } from '../shared/hooks/useMCP';
 
 export type PanelType = 'explorer' | 'search' | 'git' | 'debug' | 'extensions' | 'mcp';
 
@@ -22,7 +22,7 @@ export default function IDELayout({ children }: Props) {
   const [showSidePanel, setShowSidePanel] = useState(true);
   const [showRightPanel, setShowRightPanel] = useState(true);
   const [showBottomPanel, setShowBottomPanel] = useState(true);
-  const { logs } = useEditor();
+  const { logs } = useMCP();
 
   // 키보드 단축키
   useEffect(() => {

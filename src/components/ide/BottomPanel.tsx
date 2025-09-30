@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Terminal, Bug, AlertCircle, X, Maximize2 } from 'lucide-react';
+import { useEffect } from 'react';
 
 interface Props {
   height: number;
@@ -26,6 +27,13 @@ export default function BottomPanel({ height, onResize, onClose, logs }: Props) 
     'flashetherea@ide:~$ '
   ]);
 
+  // MCP 로그를 터미널에 추가
+  useEffect(() => {
+    if (logs.length > 0) {
+      const latestLog = logs[logs.length - 1];
+      setTerminalOutput(prev => [...prev.slice(0, -1), latestLog, 'flashetherea@ide:~$ ']);
+    }
+  }, [logs]);
   // MCP 로그를 터미널에 추가
   useEffect(() => {
     if (logs.length > 0) {

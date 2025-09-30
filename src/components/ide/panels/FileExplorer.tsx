@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { ChevronRight, ChevronDown, File, Folder, Plus, Search, MoreHorizontal, FileText, Code, Settings } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useEffect } from 'react';
 
 interface FileNode {
   name: string;
@@ -11,6 +10,9 @@ interface FileNode {
   isOpen?: boolean;
 }
 
+interface Props {
+  onFileSelect?: (path: string) => void;
+}
 const mockFiles: FileNode[] = [
   {
     name: 'src',
@@ -67,17 +69,11 @@ const mockFiles: FileNode[] = [
   { name: 'tailwind.config.js', type: 'file', path: '/tailwind.config.js' },
 ];
 
-export default function FileExplorer() {
+export default function FileExplorer({ onFileSelect }: Props) {
   const [files, setFiles] = useState<FileNode[]>(mockFiles);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedFile, setSelectedFile] = useState<string>('/docs/API_Contracts.md');
   // 기본 파일 선택
-  useEffect(() => {
-    if (!selectedFile) {
-      onFileSelect('/docs/API_Contracts.md');
-    }
-  }, [selectedFile, onFileSelect]);
-
 
   const toggleFolder = (path: string) => {
     const updateNode = (nodes: FileNode[]): FileNode[] => {
@@ -118,6 +114,7 @@ export default function FileExplorer() {
               toggleFolder(node.path);
             } else {
               setSelectedFile(node.path);
+              onFileSelect?.(node.path);
             }
           }}
           whileHover={{ backgroundColor: 'rgba(55, 65, 81, 0.5)' }}

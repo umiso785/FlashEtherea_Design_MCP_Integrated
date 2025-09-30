@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { PanelType } from '../../layouts/IDELayout';
-import FileExplorer from './panels/FileExplorer';
+import FileExplorer from '../ide/panels/FileExplorer';
 import SearchPanel from './panels/SearchPanel';
 import GitPanel from './panels/GitPanel';
 import DebugPanel from './panels/DebugPanel';
@@ -17,6 +17,7 @@ interface Props {
 
 export default function SidePanel({ activePanel, width, onResize, onClose }: Props) {
   const [isResizing, setIsResizing] = useState(false);
+  const [selectedFile, setSelectedFile] = useState<string>('/docs/API_Contracts.md');
 
   const handleMouseDown = (e: React.MouseEvent) => {
     setIsResizing(true);
@@ -38,10 +39,14 @@ export default function SidePanel({ activePanel, width, onResize, onClose }: Pro
     document.addEventListener('mouseup', handleMouseUp);
   };
 
+  const handleFileSelect = (path: string) => {
+    setSelectedFile(path);
+    console.log('File selected:', path);
+  };
   const renderPanel = () => {
     switch (activePanel) {
       case 'explorer':
-        return <FileExplorer onFileSelect={(path) => console.log('Selected:', path)} />;
+        return <FileExplorer onFileSelect={handleFileSelect} />;
       case 'search':
         return <SearchPanel />;
       case 'git':
@@ -53,7 +58,7 @@ export default function SidePanel({ activePanel, width, onResize, onClose }: Pro
       case 'mcp':
         return <MCPPanel />;
       default:
-        return <FileExplorer onFileSelect={(path) => console.log('Selected:', path)} />;
+        return <FileExplorer onFileSelect={handleFileSelect} />;
     }
   };
 

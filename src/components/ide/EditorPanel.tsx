@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Plus, MoreHorizontal } from 'lucide-react';
 import CodeEditor from './CodeEditor';
-import { useEditor } from '../../services/mcp_hooks';
+import { useMCP } from '../../shared/hooks/useMCP';
 
 interface Tab {
   id: string;
@@ -73,7 +73,7 @@ Execute or analyze code through MCP adapters.
 export default function EditorPanel({ onRunCode, onExplainCode }: Props) {
   const [tabs, setTabs] = useState<Tab[]>(initialTabs);
   const [activeTabId, setActiveTabId] = useState('1');
-  const { runCode, explainCode, loading } = useEditor();
+  const { runCode, explainCode, loading } = useMCP();
 
   const activeTab = tabs.find(tab => tab.id === activeTabId);
 
