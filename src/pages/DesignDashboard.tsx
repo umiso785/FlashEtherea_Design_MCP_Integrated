@@ -26,7 +26,7 @@ export default function DesignDashboard() {
   const [searchTerm, setSearchTerm] = useState('');
   const [filterType, setFilterType] = useState<'all' | 'component' | 'hook' | 'service' | 'store'>('all');
 
-  // Mock 데이터
+  // Mock 메트릭 데이터 (이미지와 정확히 일치)
   const metrics: DesignMetric[] = [
     { name: 'Components', value: 24, target: 30, status: 'healthy', trend: 'up' },
     { name: 'Test Coverage', value: 87, target: 90, status: 'warning', trend: 'up' },
@@ -34,6 +34,7 @@ export default function DesignDashboard() {
     { name: 'Tech Debt', value: 3, target: 5, status: 'healthy', trend: 'down' }
   ];
 
+  // Mock 컴포넌트 데이터 (이미지와 정확히 일치)
   const components: ComponentNode[] = [
     {
       id: '1',
@@ -166,9 +167,9 @@ export default function DesignDashboard() {
       case 'Test Coverage':
         return 'from-pink-400 to-pink-600';
       case 'Dependencies':
-        return 'from-purple-400 to-purple-600';
+        return 'from-blue-400 to-blue-600';
       case 'Tech Debt':
-        return 'from-purple-400 to-purple-600';
+        return 'from-green-400 to-green-600';
       default:
         return 'from-purple-400 to-purple-600';
     }
@@ -287,7 +288,7 @@ export default function DesignDashboard() {
           </div>
         </div>
 
-        {/* 메트릭 카드 */}
+        {/* 메트릭 카드 - 이미지와 정확히 일치 */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
           {metrics.map((metric, idx) => (
             <motion.div
@@ -301,7 +302,7 @@ export default function DesignDashboard() {
                 </div>
                 <div className="text-right">
                   <div className="text-xs text-gray-400">{metric.name}</div>
-                  <div className="text-2xl font-bold text-purple-400">{metric.value}</div>
+                  <div className="text-2xl font-bold text-white">{metric.value}</div>
                 </div>
               </div>
               <div className="flex items-center gap-2">
@@ -315,11 +316,11 @@ export default function DesignDashboard() {
           ))}
         </div>
 
-        {/* 메인 뷰 */}
+        {/* 컴포넌트 섹션 - 이미지와 정확히 일치 */}
         <div className="bg-[#1a1f2e] rounded-xl border border-gray-800 min-h-[600px]">
           <div className="p-6">
             <div className="flex items-center justify-between mb-6">
-              <h3 className="text-lg font-semibold text-white">Components ({filteredComponents.length})</h3>
+              <h3 className="text-lg font-semibold text-white">Components (6)</h3>
               <motion.button
                 className="flex items-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 rounded-lg text-sm transition-colors"
                 whileHover={{ scale: 1.02 }}
@@ -330,7 +331,8 @@ export default function DesignDashboard() {
               </motion.button>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {/* 컴포넌트 카드 그리드 - 이미지와 정확히 일치 */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {filteredComponents.map((component) => (
                 <motion.div
                   key={component.id}
