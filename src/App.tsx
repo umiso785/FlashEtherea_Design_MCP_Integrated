@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import IDELayout from "./ui/layouts/IDELayout";
+import IDELayout from "./layouts/IDELayout";
 import ExecutionDashboard from "./pages/ExecutionDashboard";
-import DesignDashboard from "./features/design-dashboard/DesignDashboard";
+import DesignDashboard from "./pages/DesignDashboard";
 import MainDashboard from "./pages/MainDashboard";
 import Settings from "./pages/Settings";
 
